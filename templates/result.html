@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Classification Result</h1>
+        </header>
+        
+        <div class="result-section">
+            <h2>Prediction: {{ prediction }} ({{ confidence }}% confidence)</h2>
+            
+            <div class="result-details">
+                <div class="probability-chart">
+                    <h3>Probability Distribution:</h3>
+                    {% for i in range(class_names|length) %}
+                    <div class="probability-row">
+                        <span class="class-name">{{ class_names[i] }}</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {{ probabilities[i] }}%"></div>
+                        </div>
+                        <span class="percentage">{{ probabilities[i] }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="interpretation">
+                <h3>What does this mean?</h3>
+                {% if prediction == 'normal' %}
+                    <p>No tumor was detected in the MRI image. However, please consult with a medical professional for a definitive diagnosis.</p>
+                {% elif prediction == 'glioma' %}
+                    <p>The model detected characteristics consistent with a glioma tumor. Gliomas are a type of tumor that occurs in the brain and spinal cord.</p>
+                {% elif prediction == 'meningioma' %}
+                    <p>The model detected characteristics consistent with a meningioma tumor. Meningiomas are tumors that arise from the meninges.</p>
+                {% elif prediction == 'pituitary' %}
+                    <p>The model detected characteristics consistent with a pituitary tumor. These tumors develop in the pituitary gland.</p>
+                {% endif %}
+                <p><strong>Note:</strong> This is an AI-assisted prediction and should not replace professional medical diagnosis.</p>
+            </div>
+            
+            <a href="/" class="back-btn">Analyze Another Image</a>
+        </div>
+    </div>
+</body>
+</html>
