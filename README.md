@@ -21,9 +21,3 @@ Before you begin, ensure you have met the following requirements:
 - pip package manager
 - The trained model file (`resnet50v2_model.h5`) placed in the `model/` directory
 
-## Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/mri-brain-tumor-classification.git
-   cd mri-brain-tumor-classification
