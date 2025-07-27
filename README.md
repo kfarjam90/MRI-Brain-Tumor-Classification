@@ -3,6 +3,8 @@
 
 A Flask web application that classifies MRI brain images into four categories: Glioma, Meningioma, Pituitary tumor, or Normal (no tumor), using a deep learning model (ResNet50V2).
 
+
+Click on Photo for wathing Demo:
 [![Watch the demo video](image1.png)](https://www.youtube.com/watch?v=56UmLB-Gc04)
 
 - **User-friendly interface** for uploading MRI brain images
